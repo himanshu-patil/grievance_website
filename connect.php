@@ -7,6 +7,5 @@ define('DB_PASSWORD','root');
 
 $connection=mysqli_connect(DB_HOST,DB_USERNAME,DB_PASSWORD,DB_NAME) or die("cannot connect");
 
-require 'connect.php' ;
-
+$var1= "connected";
 ?>

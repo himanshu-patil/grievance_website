@@ -2,12 +2,16 @@
 
 require './connect.php' ;
 
+
 $username=$_POST['name'];
 $password=$_POST['password'];
 
-$sql="SELECT * FROM teacher_db WHERE 'username'=".$username."and 'password'=".$password."limit 1";
+// echo $username."  ".$password;
+
+$sql="SELECT `username`,`password` FROM teacher_db WHERE `username`='".$username."'and `password`='".$password."'limit 1";
 
 $result=mysqli_query($connection,$sql);
+
 
 
 if(empty($username) || empty($password))
