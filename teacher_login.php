@@ -2,7 +2,7 @@
 
 require './connect.php' ;
 
-
+session_start();
 $username=$_POST['name'];
 $password=$_POST['password'];
 

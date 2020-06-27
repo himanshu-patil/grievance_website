@@ -1,3 +1,9 @@
+<?php
+
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -83,7 +89,7 @@
           </ul>
         </div>
 
-        <a href="./sdashboard.html"><button type="button" class="btn btn-outline-warning mt-3 float-md-right" >Back</button></a>
+        <a href="./sdashboard.html"><button type="button" class="btn btn-warning mt-3 float-md-right" >Back</button></a>
             
 
       </div>
