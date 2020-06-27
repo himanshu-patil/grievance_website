@@ -1,25 +1,27 @@
 <?php
 
 require './connect.php ';
-if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-  $username = $POST['name'];
-  $password = $POST['password'];
+
+  $username = $_POST['name'];
+  $password = $_POST['password'];
 
   $sql =  "SELECT `student id`,`password` FROM student_db WHERE `student id`='".$username."'and `password`='".$password."'limit 1";                                    
                 
-  $result = mysqli_query($connection, $sql);    
+  $result = mysqli_query($connection,$sql);    
 
-  if(!$result || mysqli_num_rows($result) <= 0)
-    {
-        echo "Error logging in.";
-        echo "The name or password does not match";
-        
-    }
-    if (mysqli_num_rows($result)==1 )
-    {
-      echo "logged in..";
-       header("location: sdashboard.html");    
-
-    }
+  
+  if(empty($username) || empty($password))
+  {
+      header('location : student_login.html');
   }
+  elseif (mysqli_num_rows($result)==1)
+  {
+      header('location:sdashboard.html');
+  }
+  else
+  {
+      echo "invalid credentials";
+      exit();
+  }
+  
 ?>
