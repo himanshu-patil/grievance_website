@@ -1,15 +1,29 @@
 <?php
 
 require './connect.php';
+include './student_login.php';
 
 $subject=$_POST['subject'];
 $issue=$_POST['issue'];
 
 
 
-echo $subject."<br><br/>".$issue;
+echo $subject."<br><br/>".$issue;//."<br><br/>".$username;
 
-$sql="INSERT INTO `complain_db`(`sr no`, `student id`, `date`, `subject`, `issue`, `status`) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6])"
+// $sql="SELECT `student id` FROM `student_db` WHERE `student id`='".$username."'LIMIT 1";
+// mysqli_query($connection,$sql);
+
+// $sql="INSERT INTO `complain_db`(`student id`, `subject`, `issue`) VALUES ($username,$subject,$issue)";
+// $result=mysqli_query($connection,$sql);
+
+// if(mysqli_num_rows($result))
+// {
+//     echo "<br> success";
+// }
+// else
+// {
+//     echo "failed to insert";
+// }
 
 
 ?>
