@@ -1,7 +1,10 @@
 body {
   font: 13px/20px "Lucida Grande", Tahoma, Verdana, sans-serif;
   color: #404040;
-  background: #0ca3d2;
+  /* background: #0ca3d2; */
+  background-image: url('../img/new_complain.jpg');
+  background-size: cover;
+  background-position-y:40% ;
 }
 
 .login {
@@ -157,4 +160,17 @@ input[type=submit] {
   background-image: linear-gradient(to bottom, #edf5f8, #cde5ef);
   -webkit-box-shadow: inset 0 1px white, 0 1px 2px rgba(0, 0, 0, 0.15);
   box-shadow: inset 0 1px white, 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+
+@media screen and (max-width: 1090px) {
+
+  body
+  {
+      /* background-color:rgba(0,255,0,0.6); */
+      background-image: url('../img/new_complain_mv.jpeg');
+      background-position-y:-50%;
+      background-size: cover;
+  }
+
 }

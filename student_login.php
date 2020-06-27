@@ -2,8 +2,12 @@
 
 require './connect.php ';
 
+session_start();
+
   $username = $_POST['name'];
   $password = $_POST['password'];
+
+  $_SESSION['username']=$username;
 
   $sql =  "SELECT `student id`,`password` FROM student_db WHERE `student id`='".$username."'and `password`='".$password."'limit 1";                                    
                 

@@ -1,3 +1,9 @@
+<?php
+
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -53,9 +59,9 @@
         </div>
       </nav>
       <div id="main" class="float-md-right p-4">
-        <div class="card col-12">
+        <div class="card alpha col-12">
           <div class="card-header">
-            Profile
+            <b>Profile</b>
           </div>
           <ul class="list-group list-group-flush">
               <?php 
@@ -66,24 +72,22 @@
 
                 if($row=mysqli_fetch_assoc($result))
                 {
-                  echo "<li class='list-group-item'> Gr No : ".$row['gr no']."</li>";
-                  echo "<li class='list-group-item'> Student ID : ".$row['student id']."</li>";
-                  echo "<li class='list-group-item'> First Name : ".$row['first name']."</li>";
-                  echo "<li class='list-group-item'> Last Name : ".$row['last name']."</li>";
-                  echo "<li class='list-group-item'> Department : ".$row['department']."</li>";
-                  echo "<li class='list-group-item'> Date of birth : ".$row['dob']."</li>";
-                  echo "<li class='list-group-item'> Password : ".$row['password']."</li>";
+                  echo "<li class='list-group-item li-items'> Gr No : ".$row['gr no']."</li>";
+                  echo "<li class='list-group-item li-items'> Student ID : ".$row['student id']."</li>";
+                  echo "<li class='list-group-item li-items'> First Name : ".$row['first name']."</li>";
+                  echo "<li class='list-group-item li-items'> Last Name : ".$row['last name']."</li>";
+                  echo "<li class='list-group-item li-items'> Department : ".$row['department']."</li>";
+                  echo "<li class='list-group-item li-items'> Date of birth : ".$row['dob']."</li>";
+                  echo "<li class='list-group-item li-items'> Password : ".$row['password']."</li>";
 
                 }
 
               ?>
-            <!-- <li class="list-group-item">Cras justo odio</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Vestibulum at eros</li> -->
+            
           </ul>
         </div>
 
-        <a href="./sdashboard.html"><button type="button" class="btn btn-outline-warning mt-3 float-md-right" >Back</button></a>
+        <a href="./sdashboard.html"><button type="button" id="back-btn" class="btn btn-warning mt-3 float-md-right" >Back</button></a>
             
 
       </div>
