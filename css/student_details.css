@@ -1,0 +1,26 @@
+body{
+    background-image: url('../img/new_complain.jpg');
+    background-size: cover;
+    background-position-y: 20%;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    overflow-x: hidden;
+}
+
+.table
+{
+  color: wheat;
+  font-size: 1.2rem;
+  background-color: rgba(200,0,0,0.4);
+}
+
+@media screen and (max-width: 1090px) {
+
+  body
+  {
+      /* background-color: #0ca3d2; */
+      background-image: url('../img/new_complain_mv.jpeg');
+      background-position-y:-15%;
+      background-size: cover;
+  }
+}
