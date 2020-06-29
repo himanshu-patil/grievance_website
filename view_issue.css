@@ -1,0 +1,39 @@
+.animated {
+  -webkit-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
+}
+.jumbotron{
+  padding: 2rem 3rem;
+  margin: 13px;
+  border-radius: 2.3rem;
+}
+.jumbotron h2{
+  position: relative;
+  display: block;
+  padding-top: 40px;
+}
+.jumbotron .bg-overlay {
+  height: 300px;
+  background: rgba(0,0,0,0.3);
+  border-radius: 25px;
+}
+.jumbotron:hover .bg-overlay {
+  height: 300px;
+  color: white;
+  background: rgba(25,15,50,0.9);
+}
+
+
+.btn{
+position:relative;
+  top:50px;
+  left:500px;
+color:black;
+background: #ccc;  
+}
+.btn:hover{
+background-color: green;
+}
+
+
