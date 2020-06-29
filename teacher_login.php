@@ -6,6 +6,8 @@ session_start();
 $username=$_POST['name'];
 $password=$_POST['password'];
 
+$_SESSION['teacherUsername']=$username;
+
 // echo $username."  ".$password;
 
 $sql="SELECT `username`,`password` FROM teacher_db WHERE `username`='".$username."'and `password`='".$password."'limit 1";
@@ -20,6 +22,7 @@ if(empty($username) || empty($password))
 }
 elseif (mysqli_num_rows($result)==1)
 {
+    
     header('location:cdashboard.html');
 }
 else

@@ -1,5 +1,6 @@
 <?php
 
+require './connect.php';
 session_start();
 
 ?>
@@ -65,9 +66,9 @@ session_start();
           </div>
           <ul class="list-group list-group-flush">
               <?php 
-                require './connect.php';
 
-                $sql="SELECT * FROM `student_db`";
+                $studentId=$_SESSION['username'];
+                $sql="SELECT * FROM `student_db` WHERE `student id` ='".$studentId."' ";
                 $result=mysqli_query($connection,$sql);
 
                 if($row=mysqli_fetch_assoc($result))
@@ -80,6 +81,10 @@ session_start();
                   echo "<li class='list-group-item li-items'> Date of birth : ".$row['dob']."</li>";
                   echo "<li class='list-group-item li-items'> Password : ".$row['password']."</li>";
 
+                }
+                else
+                {
+                  echo "<li class='list-group-item li-items'> No records [ERROR] ";
                 }
 
               ?>
