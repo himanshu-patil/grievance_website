@@ -1,3 +1,8 @@
+<?php
+    require './connect.php';
+    session_start();
+    // $id=$_SESSION[''];
+?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -6,7 +11,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Search Details - Student</title>
+        <title>Complains</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
@@ -52,20 +57,20 @@
           </nav>
 
           <div id='main'>
-               <!-- Search form -->
-               <form name="searchform" method="POST" action="./student_details_search.php">
-                    <div class="row">
-                        
-                        <div class="col-10 offset-1 offset-md-4 col-md-3 md-form mt-4">
-                            <input class="form-control" type="text" name="search-box" placeholder="Search by student id" aria-label="Search" required>
-                        </div>
-                        <div class="col-12 offset-1 offset-md-0 col-md">
-                            <input class="btn btn-outline-success mt-4" type="submit" value="Search">
-                        </div>
+
+              <!-- Search form -->
+              <form name="searchform" method="POST" action="./all_complains_search.php">
+                <div class="row">
                     
+                    <div class="col-10 offset-1 offset-md-4 col-md-3 md-form mt-4">
+                        <input class="form-control" type="text" name="search-box" placeholder="Search by student id" aria-label="Search" required>
                     </div>
-                </form>
-             
+                    <div class="col-12 offset-1 offset-md-0 col-md">
+                        <input class="btn btn-outline-success mt-4" type="submit" value="Search">
+                    </div>
+                  
+                </div>
+              </form>
 
               <div class="row mt-5">
                   <div class="col-10 offset-1">
@@ -73,51 +78,49 @@
                         <table class="table table-hover">
                             <thead>
                               <tr>
-                                <th scope="col">Gr No</th>
                                 <th scope="col">Student ID</th>
-                                <th scope="col">First Name</th>
-                                <th scope="col">Last Name</th>
-                                <th scope="col">Dept.</th>
-                                <th scope="col">Date of birth</th>
+                                <th scope="col">Date and Time</th>
+                                <th scope="col">Subject</th>
+                                <th scope="col">Status</th>
+                                <th scope="col" class="text-center">View Details</th>
                               </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                    require "./connect.php";
-                                    
-                                    $search_query=$_POST['search-box'];
-                                    $sql="SELECT * FROM `student_db` WHERE `student id` = '".$search_query."' LIMIT 1";
+                                    // require "./connect.php";
+
+                                    // session_start();
+                                    $studentId=$_POST['search-box'];
+                
+                                    $sql="SELECT * FROM `complain_db` WHERE `student id`='".$studentId."' ";
                 
                                     $result=mysqli_query($connection,$sql);
                 
                                     while($row=mysqli_fetch_assoc($result))
                                     {
-                                        echo "<tr><th scope='row'>".$row['gr no']."</th><td>".$row['student id']."</td><td>"
-                                        .$row['first name']."</td><td>".$row['last name']."</td><td>"
-                                        .$row['department']."</td><td>".$row['dob']."</td></tr>";
+                                        echo "<tr><th scope='row'>".$row['student id']."</th><td>".$row['date']."</td><td>"
+                                        .$row['subject']."</td><td>".$row['status']."</td>
+                                        <td class='text-center'>
+                                        <a href=./complain_details.php?id=".$row['student id']."&no=".$row['sr no']."> <button class='btn btn-outline-warning'>View</button> </a>
+                                        </td></tr>";
                                     }
                                     if(mysqli_num_rows($result)==0)
                                     {
-                                      echo "<tr><th scope='row'>0 results</th></tr>";
+                                        echo "<tr><th scope='row'>0 results</th></tr>";
                                     }
             
                                 ?>
+                              
                             </tbody>
                           </table>
                       </div>
         
                   </div>
               </div>
-              
-              <div class="row">
-                  <div class="col-2 offset-md-10 offset-1">
-                    <a href="./student_details.php"><button class="btn btn-danger ">Back</button></a>
-                  </div>
-                 
-              </div>
           </div>
 
-          
+      
+
         <script src="" async defer></script>
     </body>
 </html>

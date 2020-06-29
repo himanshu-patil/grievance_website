@@ -1,0 +1,12 @@
+.jumbotron{
+    background-color:rgba(255,0,0,0.4);
+    color: wheat;
+}
+.jumbotron > .row{
+    margin-top: 10px;
+}
+
+#main > .container:nth-child(2){
+    background-color:rgba(255,0,0,0.4);
+    color: wheat;
+}

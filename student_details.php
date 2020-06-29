@@ -97,7 +97,7 @@
                                     }
                                     if(mysqli_num_rows($result)==0)
                                     {
-                                        echo "0 results";
+                                      echo "<tr><th scope='row'>0 results</th></tr>";
                                     }
             
                                 ?>
