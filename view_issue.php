@@ -1,12 +1,10 @@
 <?php
 require './connect.php';
+session_start();
 
-if (!$connection) {
-     die('Could not connect: ');
-}
-
-
-
+// if (!$connection) {
+//      die('Could not connect: ');
+// }
 
 ?>
 
@@ -71,7 +69,7 @@ if (!$connection) {
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="./sdashboard.html">Navbar</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -115,13 +113,25 @@ if (!$connection) {
         
           <h2>subject is here...
              <?php
-             $student_id=$_POST['student id'];
-              $sql = "SELECT `subject` FROM 'complain_db' WHERE `student id`='".$student_id."' LIMIT 1";   
-              $result = mysqli_query($connection, $sql);
+             $student_id=$_SESSION['username'];
+              // $sql = "SELECT * FROM 'student_db' WHERE `student id`='".$student_id."' ";
+              $sql="SELECT * FROM `complain_db` WHERE `student id` = $student_id ";   
+              
+              $result = mysqli_query($connection,$sql);
+              
               $row = mysqli_fetch_assoc($result);
               
-              echo $row['subject'];
+            //  echo $student_id."<br>";
               
+
+              if($row)
+              {
+                echo $row['subject'];
+              }
+              else
+              {
+                echo "<br>no records";
+              }
               
              ?>
           </h2>
