@@ -1,12 +1,15 @@
 <?php
 require './connect.php';
+//include './student_login.php';
+session_start();
+
+//  echo $_SESSION['username'];
+/**not working */
+//  echo $username;
 
 if (!$connection) {
      die('Could not connect: ');
 }
-
-
-
 
 ?>
 <!doctype html>
@@ -19,9 +22,25 @@ if (!$connection) {
      <!-- Bootstrap CSS -->
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
      <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
-    
+
 
      <title>Registered Complaints</title>
+     <style>
+          #mytable {
+               opacity: 0.97;
+               background: transparent;
+          }
+          body{
+               background-image: url('../img/registered_compalins_bg.jpg');
+               background-size: cover;
+          }
+          .bg {
+               width: 100%;
+               position: absolute;
+               z-index: -1;
+               opacity: 0.6;
+          }
+     </style>
 </head>
 
 <body>
@@ -62,7 +81,7 @@ if (!$connection) {
           </div>
      </nav>
 
-
+     <!-- <img class="bg" src="./grievance_websilte/img/registered_complains_bg.jpg" alt="img here."> -->
      <div class="container my-4">
 
           <h1 style="text-align: center;">--Registered Complaints--</h1>
@@ -80,7 +99,7 @@ if (!$connection) {
                <tbody>
 
                     <?php
-                    $sql = "SELECT * FROM complain_db ";
+                    $sql = "SELECT * FROM `complain_db` where `student id`='" . $_SESSION['username'] . "'";
                     $result = mysqli_query($connection, $sql);
 
 

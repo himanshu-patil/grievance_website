@@ -1,6 +1,8 @@
 <?php
 require './connect.php';
 session_start();
+// echo $_SESSION['username'];
+// echo $_SESSION['password'];
 
 // if (!$connection) {
 //      die('Could not connect: ');
@@ -24,50 +26,61 @@ session_start();
 
   <title>View issue</title>
   <style type="text/css">
-         .animated {
-          -webkit-transition: all 1s ease;
-          -o-transition: all 1s ease;
-          transition: all 1s ease;
-        }
-        .jumbotron{
-          padding: 2rem 3rem;
-          margin: 13px;
-          border-radius: 2.3rem;
-        }
-        .jumbotron h2{
-          position: relative;
-          display: block;
-          padding-top: 40px;
-        }
-        .jumbotron .bg-overlay {
-          height: 300px;
-          background: rgba(0,0,0,0.3);
-          border-radius: 25px;
-        }
-        .jumbotron:hover .bg-overlay {
-          height: 300px;
-          color: white;
-          background: rgba(25,15,50,0.9);
-        }
+    .animated {
+      -webkit-transition: all 1s ease;
+      -o-transition: all 1s ease;
+      transition: all 1s ease;
+    }
+
+    .jumbotron {
+      padding: 2rem 2rem;
+      margin: 0px;
+      border-radius: 2.3rem;
+
+    }
+
+    .jumbotron h2,
+    h5 {
+      position: relative;
+      display: block;
+      padding: 16px;
+      overflow-wrap: break-word;
+    }
+
+    .jumbotron .bg-overlay {
+      /* height: 300px; */
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 25px;
+    }
+
+    .jumbotron:hover .bg-overlay {
+      /* height: 300px; */
+      color: white;
+      background: rgba(25, 15, 50, 0.9);
+    }
+
+    .aligncenter {
+      text-align: center;
+      font-size: 23px;
+    }
 
 
-        .btn{
-        position:relative;
-          top:50px;
-          left:500px;
-        color:black;
-        background: #ccc;  
-        }
-        .btn:hover{
-        background-color: green;
-        }
+    /* .btn {
+      position: relative;
+      top: 50px;
+      left: 500px;
+      color: black;
+      background: #ccc;
+    }
 
-
-
-          </style>
+    .btn:hover {
+      background-color: green;
+    } */
+  </style>
 </head>
 
 <body>
+
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="./sdashboard.html">Navbar</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -110,37 +123,88 @@ session_start();
   <div class="container my-3">
     <div class="jumbotron">
       <div class="bg-overlay animated">
-        
-          <h2>subject is here...
-             <?php
-             $student_id=$_SESSION['username'];
-              // $sql = "SELECT * FROM 'student_db' WHERE `student id`='".$student_id."' ";
-              $sql="SELECT * FROM `complain_db` WHERE `student id` = $student_id ";   
-              
-              $result = mysqli_query($connection,$sql);
-              
-              $row = mysqli_fetch_assoc($result);
-              
-            //  echo $student_id."<br>";
-              
 
-              if($row)
-              {
-                echo $row['subject'];
-              }
-              else
-              {
-                echo "<br>no records";
-              }
-              
-             ?>
-          </h2>
-
-          <p>Insert description text here.</p>
+        <h2>
+          <?php
+          $student_id = $_SESSION['username'];/**ye kya bavasir banake rakha hai samjha */
+         $sql = "SELECT * FROM `complain_db` WHERE `student id`='$student_id' LIMIT 1 ";
           
-        
+          // $sql = " SELECT * FROM `complain_db` WHERE `student id`='3' LIMIT 1 ";
+          /**3 daal ke dekh */
+
+          $result = mysqli_query($connection, $sql);
+
+          $row = mysqli_fetch_assoc($result);
+
+          //  echo $student_id."<br>";
+
+
+          if ($row) {
+            echo "Subject :- ";
+            echo $row['subject'];
+          } else {
+            echo "<br>no records";
+          }
+
+          ?>
+        </h2>
+
+        <p>
+        <h5>
+          <?php
+            if ($row) {
+              echo "Issue :- ";
+              echo $row['issue'];
+            } else {
+              echo "<br>no records";
+            }
+            echo "<br>";
+            echo "<br>";
+            echo "<br>";
+            ?>
+        </h5>
+        </p>
+
+        <div class="aligncenter">
+          
+            <?php
+            if ($row) {
+              echo "Student id :- ";
+              echo $row['student id'];     
+            } else {
+              echo "<br>no records";
+            }
+            echo "<br>";
+            ?>
+            
+            <?php
+            if ($row) {
+              echo "Complaint Status :- ";
+              echo $row['status'];     
+            } else {
+              echo "<br>no records";
+            }
+            echo "<br>";
+            ?>
+
+            <?php
+            if ($row) {
+              echo "Date and Time :- ";
+              echo $row['date'];     
+            } else {
+              echo "<br>no records";
+            }
+            echo "<br>";
+            ?>
+        </div>
+
       </div>
+
+
+
+
     </div>
+  </div>
 
 
   </div>
