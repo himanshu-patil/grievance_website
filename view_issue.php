@@ -127,10 +127,10 @@ session_start();
         <h2>
           <?php
           $student_id = $_SESSION['username'];/**ye kya bavasir banake rakha hai samjha */
-         $sql = "SELECT * FROM `complain_db` WHERE `student id`='$student_id' LIMIT 1 ";
+         $sql = "SELECT * FROM `complain_db` WHERE `sr no`='$' LIMIT 1 ";
           
           // $sql = " SELECT * FROM `complain_db` WHERE `student id`='3' LIMIT 1 ";
-          /**3 daal ke dekh */
+          
 
           $result = mysqli_query($connection, $sql);
 

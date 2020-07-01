@@ -112,7 +112,7 @@ if (!$connection) {
             <td>' . $row["date"] . '</td>  
             <td>' . $row["status"] . '</td>             
             <!-- <td><button class=" btn btn-sm btn-dark">View</button></td> -->
-           <td> <a href="./view_issue.php" class="btn btn-secondary btn-sm active" role="button" aria-pressed="true">View</a></td>
+           <td> <a href=./view_issue.php?srno=".$row['sr no']." class="btn btn-secondary btn-sm active" role="button" aria-pressed="true">View</a></td>
        </tr>  
        ';
                     }
