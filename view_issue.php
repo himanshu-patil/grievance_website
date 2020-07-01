@@ -131,7 +131,7 @@ session_start();
          $sql = "SELECT * FROM `complain_db` WHERE `sr no`='$srno' LIMIT 1 ";
           
           // $sql = " SELECT * FROM `complain_db` WHERE `student id`='3' LIMIT 1 ";
-          /**3 daal ke dekh */
+          
 
           $result = mysqli_query($connection, $sql);
 
