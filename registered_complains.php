@@ -31,14 +31,13 @@ if (!$connection) {
                background: transparent;
           } */
 
-          body {
-               font: 13px/20px "Lucida Grande", Tahoma, Verdana, sans-serif;
-               color: #404040;
-               /* background: #0ca3d2; */
-               background-image: url('../img/new_complain.jpg');
-               background-size: cover;
-               background-position-y: 40%;
-          }
+          body
+          {
+          /* background-color: #0ca3d2; */
+          background-image: url('../img/profile.jpg');
+          background-position:40%;
+          background-size: cover;
+           }
 
           /* .bg {
                width: 100%;
