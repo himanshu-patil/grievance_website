@@ -1,3 +1,16 @@
+<?php
+
+require "./connect.php";
+
+session_start();
+
+if(empty($_SESSION['teacherUsername']))
+{
+    header('location:teacher_login.html');
+}
+
+?>
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -83,14 +96,9 @@
                             </thead>
                             <tbody>
                                 <?php
-                                    require "./connect.php";
+                                    
 
-                                    session_start();
-
-                                    if(empty($_SESSION['username']))
-                                    {
-                                        header('location:teacher_login.html');
-                                    }
+                                    
                                                                         
                                     $search_query=$_POST['search-box'];
                                     $sql="SELECT * FROM `student_db` WHERE `student id` = '".$search_query."' LIMIT 1";
