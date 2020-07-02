@@ -1,39 +1,55 @@
-.animated {
-  -webkit-transition: all 1s ease;
-  -o-transition: all 1s ease;
-  transition: all 1s ease;
-}
-.jumbotron{
-  padding: 2rem 3rem;
-  margin: 13px;
-  border-radius: 2.3rem;
-}
-.jumbotron h2{
-  position: relative;
-  display: block;
-  padding-top: 40px;
-}
-.jumbotron .bg-overlay {
-  height: 300px;
-  background: rgba(0,0,0,0.3);
-  border-radius: 25px;
-}
-.jumbotron:hover .bg-overlay {
-  height: 300px;
-  color: white;
-  background: rgba(25,15,50,0.9);
-}
+body{
+  text-align: center;
+  background-color: aquamarine;
+
+  }
+  .animated {
+    -webkit-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+  }
+
+  .jumbotron {
+    padding: 2rem 2rem;
+    margin: 0px;
+    border-radius: 2.3rem;
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.5);
+
+  }
+
+  .jumbotron h2,
+  h5 {
+    position: relative;
+    display: block;
+    padding: 16px;
+    overflow-wrap: break-word;
+  }
+
+  .jumbotron .bg-overlay {
+    /* height: 300px; */
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 25px;
+  }
+
+  .jumbotron:hover .bg-overlay {
+    /* height: 300px; */
+    color: white;
+    background: rgba(25, 15, 50, 0.9);
+  }
+
+  .aligncenter {
+    font-size: 23px;
+  }
 
 
-.btn{
-position:relative;
-  top:50px;
-  left:500px;
-color:black;
-background: #ccc;  
-}
-.btn:hover{
-background-color: green;
-}
+  /* .btn {
+    position: relative;
+    top: 50px;
+    left: 500px;
+    color: black;
+    background: #ccc;
+  }
 
-
+  .btn:hover {
+    background-color: green;
+  } */

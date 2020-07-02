@@ -31,7 +31,7 @@ if(empty($_SESSION['username']))
 <body>
 
      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-          <a class="navbar-brand" href="#">Asgard College</a>
+          <a class="navbar-brand" href="sdashboard.html">Asgard College</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                <span class="navbar-toggler-icon"></span>
           </button>
@@ -62,10 +62,12 @@ if(empty($_SESSION['username']))
 
      <!-- <img class="bg" src="./grievance_websilte/img/registered_complains_bg.jpg" alt="img here."> -->
      <div class="container my-4">
+     
 
           <h1 style="text-align: center;">--Registered Complaints--</h1>
           <div class="table-responsive-md">
-               <table class="table table-striped table-bordered table-hover  my-4" id="myTable">
+               
+               <table class="table  table-hover  my-4" id="myTable">
                     <thead class="thead-dark">
                          <tr>
                               <th scope="col">Sr No</th>
@@ -94,7 +96,7 @@ if(empty($_SESSION['username']))
 
                               echo "
                <!-- <td><button class=' btn btn-sm btn-dark'>View</button></td> -->
-               <td> <a href=./view_issue.php?srno=" . $row['sr no'] . " class='btn btn-secondary btn-sm active' role='button' aria-pressed='true'>View</a></td>
+               <td class='text-center'> <a href=./view_issue.php?srno=" . $row['sr no'] . " class='btn btn-secondary btn-sm active' role='button' aria-pressed='true'>View</a></td>
           </tr>  
           ";
                          }
