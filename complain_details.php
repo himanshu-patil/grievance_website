@@ -1,5 +1,10 @@
 <?php 
     session_start();
+
+    if(empty($_SESSION['username']))
+    {
+        header('location:teacher_login.html');
+    }
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -148,7 +153,7 @@
                         <!-- <a href='./update_status.php'> -->
                          <button class='btn btn-outline-warning' type="submit" >Update</button>
                          <!-- </a> -->
-                        <!-- <a href='./all_complains.php'> <button class='btn btn-outline-warning ml-4'>Back</button> </a>  -->
+                        <!-- <a href='./cdashboard.html'> <button class='btn btn-outline-warning ml-4' name="back-btn">Back</button> </a>  -->
                     </div>
                 </form>
 

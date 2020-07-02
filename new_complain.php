@@ -1,9 +1,16 @@
 <?php
 
 require './connect.php';
-// include './student_login.php';
 
 session_start();
+
+
+if(empty($_SESSION['username']))
+{
+     header('location:student_login.html');
+}
+
+
 
 $subject=$_POST['subject'];
 $issue=$_POST['issue'];
