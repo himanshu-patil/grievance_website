@@ -27,8 +27,13 @@ elseif (mysqli_num_rows($result)==1)
 }
 else
 {
-    echo "invalid credebtials";
-    exit();
+    echo "
+    <script>
+        alert('Invalid credentials');
+        window.location.href='./teacher_login.html' ;
+    </script>
+    ";
+    
 }
 
 ?>

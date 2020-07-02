@@ -20,8 +20,6 @@
         
         <script src="bootstrap-4.0.0/js/bootstrap.min.js""></script>
 
-        <script ></script>
-
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark  bg-dark ">
@@ -130,7 +128,7 @@
                 <form method="POST" action="./update_status.php">
                     <div class="row ml-2">
                         <div class=" col-12 col-md-2">
-                            <input type="radio" value="UNSOLVED" name="complainStatus">
+                            <input type="radio" value="UNSOLVED" name="complainStatus" required>
                              <!-- checked> -->
                             <label>UNSOLVED</label>
                         </div>
@@ -148,7 +146,7 @@
                     
                     <div class="row offset-md-10">
                         <!-- <a href='./update_status.php'> -->
-                         <button class='btn btn-outline-warning' type="submit" onclick="">Update</button>
+                         <button class='btn btn-outline-warning' type="submit" >Update</button>
                          <!-- </a> -->
                         <!-- <a href='./all_complains.php'> <button class='btn btn-outline-warning ml-4'>Back</button> </a>  -->
                     </div>

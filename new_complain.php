@@ -11,7 +11,7 @@ $user=$_SESSION['username'];
 
 
 
-echo $subject."<br><br/>".$issue."<br><br/>".$user;
+// echo $subject."<br><br/>".$issue."<br><br/>".$user;
 
 // $sql="SELECT `student id` FROM `student_db` WHERE `student id`='".$username."'LIMIT 1";
 // mysqli_query($connection,$sql);

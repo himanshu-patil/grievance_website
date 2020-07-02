@@ -7,6 +7,20 @@ session_start();
 $sr = $_SESSION['SRN'];
 $status=$_POST['complainStatus'];
 
+$sql="SELECT `status` FROM `complain_db` WHERE `sr no` = $sr";
+$result=mysqli_query($connection,$sql);
+
+$row=mysqli_fetch_assoc($result);
+
+if($row['status']==$status)
+{
+
+}
+else
+{
+    
+}
+
 $sql="UPDATE `complain_db` SET `status`='".$status."' WHERE `sr no` ='".$sr."' ";
 
 $result=mysqli_query($connection,$sql);
