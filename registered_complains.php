@@ -64,42 +64,45 @@ if(empty($_SESSION['username']))
      <div class="container my-4">
 
           <h1 style="text-align: center;">--Registered Complaints--</h1>
-          <table class="table table-striped table-bordered table-hover  my-4" id="myTable">
-               <thead class="thead-dark">
-                    <tr>
-                         <th scope="col">Sr No</th>
-                         <th scope="col">Student id</th>
-                         <th scope="col">Subject</th>
-                         <th scope="col">Date</th>
-                         <th scope="col">Status</th>
-                         <th scope="col">Action</th>
-                    </tr>
-               </thead>
-               <tbody>
+          <div class="table-responsive-md">
+               <table class="table table-striped table-bordered table-hover  my-4" id="myTable">
+                    <thead class="thead-dark">
+                         <tr>
+                              <th scope="col">Sr No</th>
+                              <th scope="col">Student id</th>
+                              <th scope="col">Subject</th>
+                              <th scope="col">Date</th>
+                              <th scope="col">Status</th>
+                              <th scope="col">Action</th>
+                         </tr>
+                    </thead>
+                    <tbody>
 
-                    <?php
-                    $sql = "SELECT * FROM `complain_db` where `student id`='" . $_SESSION['username'] . "'";
-                    $result = mysqli_query($connection, $sql);
+                         <?php
+                         $sql = "SELECT * FROM `complain_db` where `student id`='" . $_SESSION['username'] . "'";
+                         $result = mysqli_query($connection, $sql);
 
 
-                    while ($row = mysqli_fetch_array($result)) {
-                         echo '  
-       <tr>  
-            <td>' . $row["sr no"] . '</td>  
-            <td>' . $row["student id"] . '</td>  
-            <td>' . $row["subject"] . '</td>  
-            <td>' . $row["date"] . '</td>  
-            <td>' . $row["status"] . '</td>';
+                         while ($row = mysqli_fetch_array($result)) {
+                              echo '  
+          <tr>  
+               <td>' . $row["sr no"] . '</td>  
+               <td>' . $row["student id"] . '</td>  
+               <td>' . $row["subject"] . '</td>  
+               <td>' . $row["date"] . '</td>  
+               <td>' . $row["status"] . '</td>';
 
-                         echo "
-            <!-- <td><button class=' btn btn-sm btn-dark'>View</button></td> -->
-           <td> <a href=./view_issue.php?srno=" . $row['sr no'] . " class='btn btn-secondary btn-sm active' role='button' aria-pressed='true'>View</a></td>
-       </tr>  
-       ";
-                    }
-                    ?>
-               </tbody>
-          </table>
+                              echo "
+               <!-- <td><button class=' btn btn-sm btn-dark'>View</button></td> -->
+               <td> <a href=./view_issue.php?srno=" . $row['sr no'] . " class='btn btn-secondary btn-sm active' role='button' aria-pressed='true'>View</a></td>
+          </tr>  
+          ";
+                         }
+                         ?>
+                    </tbody>
+               </table>
+          </div>
+          
      </div>
      <hr>
      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
