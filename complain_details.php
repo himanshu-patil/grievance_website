@@ -1,7 +1,7 @@
 <?php 
     session_start();
 
-    if(empty($_SESSION['username']))
+    if(empty($_SESSION['teacherUsername']))
     {
         header('location:teacher_login.html');
     }
