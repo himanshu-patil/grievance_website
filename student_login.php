@@ -24,8 +24,13 @@ session_start();
   }
   else
   {
-      echo "invalid credentials";
-      exit();
+    echo "
+    <script>
+        alert('Invalid credentials');
+        window.location.href='./teacher_login.html' ;
+    </script>
+    ";
+    
   }
   
 ?>

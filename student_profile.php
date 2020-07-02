@@ -65,6 +65,12 @@ session_start();
               <?php 
 
                 $studentId=$_SESSION['username'];
+
+                
+                if(empty($_SESSION['username']))
+                {
+                  header('location:student_login.html');
+                }
                 $sql="SELECT * FROM `student_db` WHERE `student id` ='".$studentId."' ";
                 $result=mysqli_query($connection,$sql);
 

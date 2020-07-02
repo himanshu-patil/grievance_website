@@ -1,9 +1,16 @@
 <?php
 
 require './connect.php';
-// include './student_login.php';
 
 session_start();
+
+
+if(empty($_SESSION['username']))
+{
+     header('location:student_login.html');
+}
+
+
 
 $subject=$_POST['subject'];
 $issue=$_POST['issue'];
@@ -11,7 +18,7 @@ $user=$_SESSION['username'];
 
 
 
-echo $subject."<br><br/>".$issue."<br><br/>".$user;
+// echo $subject."<br><br/>".$issue."<br><br/>".$user;
 
 // $sql="SELECT `student id` FROM `student_db` WHERE `student id`='".$username."'LIMIT 1";
 // mysqli_query($connection,$sql);

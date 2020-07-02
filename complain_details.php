@@ -1,5 +1,10 @@
 <?php 
     session_start();
+
+    if(empty($_SESSION['teacherUsername']))
+    {
+        header('location:teacher_login.html');
+    }
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -19,8 +24,6 @@
         <link rel="stylesheet" type="text/css" href="./css/complain_details.css">
         
         <script src="bootstrap-4.0.0/js/bootstrap.min.js""></script>
-
-        <script ></script>
 
     </head>
     <body>
@@ -130,7 +133,7 @@
                 <form method="POST" action="./update_status.php">
                     <div class="row ml-2">
                         <div class=" col-12 col-md-2">
-                            <input type="radio" value="UNSOLVED" name="complainStatus">
+                            <input type="radio" value="UNSOLVED" name="complainStatus" required>
                              <!-- checked> -->
                             <label>UNSOLVED</label>
                         </div>
@@ -148,9 +151,9 @@
                     
                     <div class="row offset-md-10">
                         <!-- <a href='./update_status.php'> -->
-                         <button class='btn btn-outline-warning' type="submit" onclick="">Update</button>
+                         <button class='btn btn-outline-warning' type="submit" >Update</button>
                          <!-- </a> -->
-                        <!-- <a href='./all_complains.php'> <button class='btn btn-outline-warning ml-4'>Back</button> </a>  -->
+                        <!-- <a href='./cdashboard.html'> <button class='btn btn-outline-warning ml-4' name="back-btn">Back</button> </a>  -->
                     </div>
                 </form>
 
@@ -163,5 +166,10 @@
       
 
         <script src="" async defer></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+     <script src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+     <script>
     </body>
 </html>

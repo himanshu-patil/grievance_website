@@ -1,6 +1,11 @@
 <?php
     require './connect.php';
     session_start();
+
+    if(empty($_SESSION['teacherUsername']))
+    {
+        header('location:teacher_login.html');
+    }
     // $id=$_SESSION[''];
 ?>
 <!DOCTYPE html>

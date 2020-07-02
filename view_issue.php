@@ -1,12 +1,12 @@
 <?php
 require './connect.php';
 session_start();
-// echo $_SESSION['username'];
-// echo $_SESSION['password'];
 
-// if (!$connection) {
-//      die('Could not connect: ');
-// }
+
+if(empty($_SESSION['username']))
+{
+     header('location:student_login.html');
+}
 
 ?>
 

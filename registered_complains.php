@@ -3,13 +3,11 @@ require './connect.php';
 //include './student_login.php';
 session_start();
 
-//  echo $_SESSION['username'];
-/**not working */
-//  echo $username;
-
-if (!$connection) {
-     die('Could not connect: ');
+if(empty($_SESSION['username']))
+{
+     header('location:student_login.html');
 }
+
 
 ?>
 <!doctype html>
@@ -25,27 +23,7 @@ if (!$connection) {
 
 
      <title>Registered Complaints</title>
-     <style>
-          /* #mytable {
-               opacity: 0.97;
-               background: transparent;
-          } */
-
-          body
-          {
-          /* background-color: #0ca3d2; */
-          background-image: url('../img/profile.jpg');
-          background-position:40%;
-          background-size: cover;
-           }
-
-          /* .bg {
-               width: 100%;
-               position: absolute;
-               z-index: -1;
-               opacity: 0.6;
-          } */
-     </style>
+     
 </head>
 
 <body>
