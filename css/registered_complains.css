@@ -8,9 +8,13 @@
   table, th, td{
 
     background-color: red ;
-    opacity: 0.7;
+    opacity: 0.8;
     color: white;
+    
 
+  }
+  table{
+    box-shadow: 0 5px 10px 15px rgba(0, 0, 0, 0.5);
   }
   
 
