@@ -80,20 +80,20 @@
                 // }
                 ?>
               <div class='jumbotron pt-3 pb-3'>
-                    <div class='row'>
+                    <div class='row ml-1'>
                         <h2>Complain Details : </h2>
                     </div> 
-                    <div class='row'>
+                    <div class='row ml-1'>
                         <h5>Student ID : <?php echo $id; ?> </h5>
                     </div>
-                    <div class='row'>
+                    <div class='row ml-1'>
                         <h5>Full Name :
                              <?php 
                              $fullname= $row['first name']." ".$row['last name'];
                              echo $fullname;
                               ?> </h5>
                     </div>
-                    <div class='row'>
+                    <div class='row ml-1'>
                         <h5>Department : <?php echo $row['department']; ?> </h5>
                     </div>
               </div>
