@@ -3,13 +3,11 @@ require './connect.php';
 //include './student_login.php';
 session_start();
 
-//  echo $_SESSION['username'];
-/**not working */
-//  echo $username;
-
-if (!$connection) {
-     die('Could not connect: ');
+if(empty($_SESSION['username']))
+{
+     header('location:student_login.html');
 }
+
 
 ?>
 <!doctype html>

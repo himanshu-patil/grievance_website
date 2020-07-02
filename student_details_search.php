@@ -84,7 +84,14 @@
                             <tbody>
                                 <?php
                                     require "./connect.php";
-                                    
+
+                                    session_start();
+
+                                    if(empty($_SESSION['username']))
+                                    {
+                                        header('location:teacher_login.html');
+                                    }
+                                                                        
                                     $search_query=$_POST['search-box'];
                                     $sql="SELECT * FROM `student_db` WHERE `student id` = '".$search_query."' LIMIT 1";
                 

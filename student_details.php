@@ -80,6 +80,13 @@
                             <tbody>
                                 <?php
                                     require "./connect.php";
+
+                                    session_start();
+
+                                    if(empty($_SESSION['username']))
+                                    {
+                                        header('location:teacher_login.html');
+                                    }
                 
                                     $sql="SELECT * FROM `student_db`";
                 

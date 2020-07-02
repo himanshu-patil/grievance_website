@@ -84,7 +84,15 @@
                             <tbody>
                                 <?php
                                     require "./connect.php";
-                
+
+                                    session_start();
+
+                                    if(empty($_SESSION['username']))
+                                    {
+                                        header('location:teacher_login.html');
+                                    }
+
+                                    // if($_SESSION[])
                                     $sql="SELECT * FROM `complain_db`";
                 
                                     $result=mysqli_query($connection,$sql);
