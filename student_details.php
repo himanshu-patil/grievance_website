@@ -25,7 +25,7 @@ if(empty($_SESSION['teacherUsername']))
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        
         <link rel="stylesheet" type="text/css" href="bootstrap-4.0.0/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="./css/student_details.css"
         <script src="bootstrap-4.0.0/js/bootstrap.min.js""></script>

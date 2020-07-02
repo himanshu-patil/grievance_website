@@ -23,28 +23,7 @@ if(empty($_SESSION['username']))
 
 
      <title>Registered Complaints</title>
-     <style>
-          /* #mytable {
-               opacity: 0.97;
-               background: transparent;
-          } */
-
-          body {
-               font: 13px/20px "Lucida Grande", Tahoma, Verdana, sans-serif;
-               color: #404040;
-               /* background: #0ca3d2; */
-               background-image: url('../img/new_complain.jpg');
-               background-size: cover;
-               background-position-y: 40%;
-          }
-
-          /* .bg {
-               width: 100%;
-               position: absolute;
-               z-index: -1;
-               opacity: 0.6;
-          } */
-     </style>
+     
 </head>
 
 <body>
