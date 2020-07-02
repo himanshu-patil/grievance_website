@@ -26,53 +26,53 @@ if (!$connection) {
 
      <title>Registered Complaints</title>
      <style>
-          #mytable {
+          /* #mytable {
                opacity: 0.97;
                background: transparent;
-          }
-          body{
-               background-image: url('../img/registered_compalins_bg.jpg');
+          } */
+
+          body {
+               font: 13px/20px "Lucida Grande", Tahoma, Verdana, sans-serif;
+               color: #404040;
+               /* background: #0ca3d2; */
+               background-image: url('../img/new_complain.jpg');
                background-size: cover;
+               background-position-y: 40%;
           }
-          .bg {
+
+          /* .bg {
                width: 100%;
                position: absolute;
                z-index: -1;
                opacity: 0.6;
-          }
+          } */
      </style>
 </head>
 
 <body>
 
      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-          <a class="navbar-brand" href="#">Navbar</a>
+          <a class="navbar-brand" href="#">Asgard College</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                <span class="navbar-toggler-icon"></span>
           </button>
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                         <a class="nav-link" href="sdashboard.html">Home</a>
+                    </li>
+                    <li class="nav-item ">
+                         <a class="nav-link" href="student_profile.php">Profile</a>
+                    </li>
+                    <li class="nav-item ">
+                         <a class="nav-link" href="new_complain.html">New_Complain</a>
+                    </li>
                     <li class="nav-item active">
-                         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                         <a class="nav-link" href="registered_complains.php">Registered_Complain<span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
-                         <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              Dropdown
-                         </a>
-                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                              <a class="dropdown-item" href="#">Home</a>
-                              <a class="dropdown-item" href="#">Another action</a>
-                              <div class="dropdown-divider"></div>
-                              <a class="dropdown-item" href="#">Something else here</a>
-                         </div>
-                    </li>
-                    <li class="nav-item">
-                         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                    </li>
+
+
                </ul>
                <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -111,10 +111,10 @@ if (!$connection) {
             <td>' . $row["subject"] . '</td>  
             <td>' . $row["date"] . '</td>  
             <td>' . $row["status"] . '</td>';
-            
-            echo "
+
+                         echo "
             <!-- <td><button class=' btn btn-sm btn-dark'>View</button></td> -->
-           <td> <a href=./view_issue.php?srno=".$row['sr no']." class='btn btn-secondary btn-sm active' role='button' aria-pressed='true'>View</a></td>
+           <td> <a href=./view_issue.php?srno=" . $row['sr no'] . " class='btn btn-secondary btn-sm active' role='button' aria-pressed='true'>View</a></td>
        </tr>  
        ";
                     }
