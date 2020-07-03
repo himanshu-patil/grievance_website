@@ -4,6 +4,7 @@
     background-image: url('../img/registered_complains_hori.jpg');
     background-position:40%;
     background-size: cover;
+    background-attachment: fixed;
   }
   table, th, td{
 
