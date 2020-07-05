@@ -84,7 +84,7 @@ session_start();
               </ul>
           </div>
 
-          <a href="./cdashboard.html"><button type="button" id="back-btn" class="btn btn-warning mt-3 float-md-right" >Back</button></a>
+          <a href="./cdashboard.php"><button type="button" id="back-btn" class="btn btn-warning mt-3 float-md-right" >Back</button></a>
         
 
   </div>

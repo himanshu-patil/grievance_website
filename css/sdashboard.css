@@ -38,8 +38,13 @@ body{
     padding: 5px;
     /* font-size: 40px;*/ 
 }
-hr{
+.mango >a{
+    color: whitesmoke;
+}
+.mango >a:hover{
     color: white;
+    font-size: 1.1rem;
+    text-decoration: none;
 }
 /* desktop view */
 @media screen and (min-width: 800px) {

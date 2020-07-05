@@ -4,6 +4,8 @@ require './connect.php';
 
 session_start();
 
+$_SESSION['ann_no']=1;
+
 ?>
 
 
@@ -19,10 +21,41 @@ session_start();
   <link rel="stylesheet" type="text/css" href="./css/sdashboard.css">
   <link rel="stylesheet" type="text/css" href="bootstrap-4.0.0/css/bootstrap.min.css">
  
-  <script src="bootstrap-4.0.0/js/bootstrap.min.js""></script>
+  <!-- <script src="bootstrap-4.0.0/js/bootstrap.min.js""></script> -->
 
-    </head>
-    <body>
+  
+
+</head>
+
+<body>
+
+        <!-- Button trigger modal -->
+        <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+          Launch demo modal
+        </button> -->
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="ModalTitle" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="ModalTitle"><span id="notice-title"></span></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <span id="notice-content"></span>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modal over -->
+
         <nav class=" navbar navbar-expand-lg navbar-dark bg-dark ">
             <a class=" navbar-brand" href="./cdashboard.html">Asgard College</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,16 +98,20 @@ session_start();
                   <strong>Announcements</strong><br><br>
                   <?php
 
-                    $sql="SELECT `subject` FROM `notice`";
+                    $sql="SELECT `sr no`,`subject` FROM `notice`";
 
                     $result=mysqli_query($connection,$sql);
                     
                     while($row=mysqli_fetch_assoc($result))
                     {
-                      echo 
-                      $row['subject']."<br><hr><br>
+                      $srno=$row['sr no'];
+                      $_SESSION['ann_no']=$srno; // " ' '
+
+                    ?>
+                      <a href='#' data-toggle='modal' data-target="#myModal" class="jumbo"
+                       id="<?php echo $srno; ?>" onclick="ShowDetails(this)"> <?php echo $row['subject']; ?> <br></a>
                       
-                      ";
+                      <?php
                     }
 
                     if(mysqli_num_rows($result)==0)
@@ -92,15 +129,35 @@ session_start();
 
         
         <script src="" async defer></script>
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"></script>
+  <script src="jquery-3.5.1.min.js">
+    </script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
     integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
     crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
     integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
     crossorigin="anonymous"></script>
-  </body>
 
-  </html>
+    <script>
+      
+
+        function ShowDetails(button){
+          var srno=button.id;
+
+          $.ajax({
+            url:"announcement.php",
+            type:"GET",
+            data:{"srno":srno},
+            success:function(response){
+              var circular=JSON.parse(response);
+              $('#notice-title').text(circular.subject);
+              $('#notice-content').text(circular.content);
+            }
+          });
+        }
+     
+    </script>
+  
+</body>
+
+</html>
