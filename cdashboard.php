@@ -4,6 +4,10 @@ require './connect.php';
 
 session_start();
 
+if(empty($_SESSION['teacherUsername']))
+{
+  header('location:teacher_login.html');
+}
 $_SESSION['ann_no']=1;
 
 ?>
@@ -56,6 +60,38 @@ $_SESSION['ann_no']=1;
         </div>
         <!-- Modal over -->
 
+        <!-- Modal add announcement -->
+        <div class="modal fade" id="addNoticeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add new announcement</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Subject</label>
+                    <input type="text" class="form-control" id="notice-subject">
+                  </div>
+                  <div class="form-group">
+                    <label for="message-text" class="col-form-label">Content</label>
+                    <textarea class="form-control" id="notice-content"></textarea>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" id="saveNoticeModal" onclick="NoticeModal(this)" class="btn btn-primary">Save</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- modal over -->
+
         <nav class=" navbar navbar-expand-lg navbar-dark bg-dark ">
             <a class=" navbar-brand" href="./cdashboard.html">Asgard College</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -93,9 +129,12 @@ $_SESSION['ann_no']=1;
                     </div>
                 </aside>
 
-                <div class="mango col-8 col-md-5 offset-md-3 mt-3">
+                <div class="mango col-8 offset-1 col-md-5 offset-md-3 mt-3">
                   
-                  <strong>Announcements</strong><br><br>
+                  <h3 class="mb-3 mt-2 "><strong class="col-12 col-md-4 px-0">Announcements</strong>
+                  <button type="button" data-toggle="modal" data-target="#addNoticeModal" id="add-notice-btn"
+                   class="btn btn-info btn-sm float-right col-12 col-md-2 my-3 my-md-0">Add</button></h3>
+                  
                   <?php
 
                     $sql="SELECT `sr no`,`subject` FROM `notice`";
@@ -108,8 +147,9 @@ $_SESSION['ann_no']=1;
                       $_SESSION['ann_no']=$srno; // " ' '
 
                     ?>
-                      <a href='#' data-toggle='modal' data-target="#myModal" class="jumbo"
-                       id="<?php echo $srno; ?>" onclick="ShowDetails(this)"> <?php echo $row['subject']; ?> <br></a>
+                      <a href='#' data-toggle='modal' data-target="#myModal" class="mb-3"
+                       id="<?php echo $srno; ?>" onclick="ShowDetails(this)"> <?php echo $row['subject']; ?> <br><br></a>
+                      
                       
                       <?php
                     }
@@ -128,7 +168,7 @@ $_SESSION['ann_no']=1;
         </div>
 
         
-        <script src="" async defer></script>
+        
   <script src="jquery-3.5.1.min.js">
     </script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
@@ -154,6 +194,16 @@ $_SESSION['ann_no']=1;
               $('#notice-content').text(circular.content);
             }
           });
+        }
+
+        function NoticeModal(button){
+          // var subject=$('#notice-subject').val();
+          console.log("hi");
+          // $('#saveNoticeModal').on('click',function(){
+          //   console.log('clicked');
+          //   var subject=$('#notice-subject').val();
+          //   console.log(subject);
+          // });
         }
      
     </script>

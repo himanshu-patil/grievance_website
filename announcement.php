@@ -1,5 +1,11 @@
 <?php
 require './connect.php';
+session_start();
+
+if(empty($_SESSION['teacherUsername']) || isset($_SESSION['username']) )
+{
+header('location:teacher_login.html');
+}
 
 $srno=$_GET['srno'];
 

@@ -61,6 +61,11 @@ session_start();
             <ul class="list-group list-group-flush">
                 <?php 
                   $user=$_SESSION['teacherUsername'];
+
+                  if(empty($_SESSION['teacherUsername']))
+                  {
+                    header('location:teacher_login.html');
+                  }
                   $sql="SELECT * FROM `teacher_db` WHERE `username` ='".$user."' ";
                   $result=mysqli_query($connection,$sql);
 
