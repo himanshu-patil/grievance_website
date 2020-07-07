@@ -132,7 +132,7 @@ $_SESSION['ann_no']=1;
 
               <div class="modal-body">
                 <form id="editNoticeForm" method="POST" action="editNotice.php">
-                  <input type="text" name="editModalSrno" id="editModalSrno">
+                  <input type="hidden" name="editModalSrno" id="editModalSrno">
                   <div class="form-group">
                     <label for="editSubject" class="col-form-label">Subject</label>
                     <input type="text" class="form-control" name="subject" id="editSubject">
@@ -209,17 +209,19 @@ $_SESSION['ann_no']=1;
                       $_SESSION['ann_no']=$srno; // " ' '
 
                     ?>
-                      <a href='#' data-toggle='modal' data-target="#myModal" class="mb-3"
-                       id="<?php echo $srno; ?>" onclick="ShowDetails(this)"> <?php echo $row['subject']; ?>
-                       </a>
-                       
-                       <button type="button" data-toggle='modal' data-target="#deleteModal" id="<?php echo $srno; ?>"
-                        onclick="deleteNotice(this)" class="btn btn-sm btn-danger float-right">Delete</button>
-                       
+                      
+                      <div class="row">
+                        <a href='#' data-toggle='modal' data-target="#myModal" class=" col-4 col-md-7 text-truncate"
+                        id="<?php echo $srno; ?>" onclick="ShowDetails(this)"> <?php echo $row['subject']; ?>
+                        </a>
+                        
                         <button type="button" data-toggle='modal' data-target="#editNoticeModal" id="<?php echo $srno; ?>"
-                        onclick="editNotice(this)" class="btn btn-sm btn-success float-right mr-2">Edit</button>
-                       <br><br>
-                       
+                          onclick="editNotice(this)" class="btn btn-sm btn-success ml-auto mr-3">Edit</button>
+                          <button type="button" data-toggle='modal' data-target="#deleteModal" id="<?php echo $srno; ?>"
+                          onclick="deleteNotice(this)" class="btn btn-sm btn-danger mr-3">Delete</button>
+
+                        </div>
+                       <br>
                       
                       <?php
                     }
@@ -284,7 +286,6 @@ $_SESSION['ann_no']=1;
             type:"GET",
             data:{"srno":srno},
             success:function(response){
-              alert(response);
               var circular=JSON.parse(response);
               $('#editSubject').val(circular.subject);
               $('#editContent').val(circular.content);

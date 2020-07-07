@@ -28,7 +28,7 @@ session_start();
     <body>
 
       <nav class="navbar navbar-expand-lg navbar-dark  bg-dark ">
-      <a class=" navbar-brand" href="./sdashboard.html">Asgard College</a>
+      <a class=" navbar-brand" href="./sdashboard.php">Asgard College</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -36,7 +36,7 @@ session_start();
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-            <a class="nav-link" href="sdashboard.html">Home</a>
+            <a class="nav-link" href="sdashboard.php">Home</a>
             </li>
             <li class="nav-item active">
             <a class="nav-link" href="student_profile.php">Profile<span class="sr-only">(current)</span></a>
@@ -95,7 +95,7 @@ session_start();
           </ul>
         </div>
 
-        <a href="./sdashboard.html"><button type="button" id="back-btn" class="btn btn-warning mt-3 float-md-right" >Back</button></a>
+        <a href="./sdashboard.php"><button type="button" id="back-btn" class="btn btn-warning mt-3 float-md-right" >Back</button></a>
             
 
       </div>

@@ -33,7 +33,7 @@ if(mysqli_affected_rows($connection))
     
     <script>
         alert('Complaint Registered Successfully');
-        window.location.href='./sdashboard.html';
+        window.location.href='./sdashboard.php';
     </script>
     
     ";
