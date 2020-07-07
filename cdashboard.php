@@ -33,10 +33,7 @@ $_SESSION['ann_no']=1;
 
 <body>
 
-        <!-- Button trigger modal -->
-        <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-          Launch demo modal
-        </button> -->
+        
 
         <!-- Modal -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="ModalTitle" aria-hidden="true">
@@ -52,6 +49,7 @@ $_SESSION['ann_no']=1;
                 <span id="notice-content"></span>
               </div>
               <div class="modal-footer">
+                <label>Circular date : <span id="noticeDate"></span></label>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
               </div>
@@ -64,28 +62,92 @@ $_SESSION['ann_no']=1;
         <div class="modal fade" id="addNoticeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
+
               <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Add new announcement</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
+
               <div class="modal-body">
-                <form>
+                <form id="addNoticeForm" method="POST" action="addNotice.php">
                   <div class="form-group">
-                    <label for="recipient-name" class="col-form-label">Subject</label>
-                    <input type="text" class="form-control" id="notice-subject">
+                    <label for="subject" class="col-form-label">Subject</label>
+                    <input type="text" class="form-control" name="subject" id="subject">
                   </div>
                   <div class="form-group">
                     <label for="message-text" class="col-form-label">Content</label>
-                    <textarea class="form-control" id="notice-content"></textarea>
+                    <textarea class="form-control" name="content" id="notice-content"></textarea>
+                  </div>
+                  <div class="form-group  float-right">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" id="saveNoticeModal" name="save" class="btn btn-primary">Save</button>
                   </div>
                 </form>
               </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" id="saveNoticeModal" onclick="NoticeModal(this)" class="btn btn-primary">Save</button>
+              
+            </div>
+          </div>
+        </div>
+
+        <!-- modal over -->
+
+        <!-- Delete Modal -->
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="DeleteModalTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="DeleteModalTitle">Confirm Delete</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
               </div>
+              <div class="modal-body">
+                <form action="deleteNotice.php" method="POST">
+                  <input type="hidden" name="srno" id='deleteModalinput'>
+                  <div class="form-group  float-right">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+                    <button type="submit" id="deleteModalYesBtn" name="deletebtn" class="btn btn-danger">Yes</button>
+                  </div>
+                </form>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        <!-- Modal over -->
+
+        <!-- Modal edit announcement -->
+        <div class="modal fade" id="editNoticeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit announcement</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+
+              <div class="modal-body">
+                <form id="editNoticeForm" method="POST" action="editNotice.php">
+                  <input type="text" name="editModalSrno" id="editModalSrno">
+                  <div class="form-group">
+                    <label for="editSubject" class="col-form-label">Subject</label>
+                    <input type="text" class="form-control" name="subject" id="editSubject">
+                  </div>
+                  <div class="form-group">
+                    <label for="editContent" class="col-form-label">Content</label>
+                    <textarea class="form-control" name="content" id="editContent"></textarea>
+                  </div>
+                  <div class="form-group  float-right">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" id="editNoticeModal" name="editBtn" class="btn btn-primary">Update</button>
+                  </div>
+                </form>
+              </div>
+              
             </div>
           </div>
         </div>
@@ -129,7 +191,7 @@ $_SESSION['ann_no']=1;
                     </div>
                 </aside>
 
-                <div class="mango col-8 offset-1 col-md-5 offset-md-3 mt-3">
+                <div class="mango col-10 offset-1 col-md-5 offset-md-3 mt-3 ">
                   
                   <h3 class="mb-3 mt-2 "><strong class="col-12 col-md-4 px-0">Announcements</strong>
                   <button type="button" data-toggle="modal" data-target="#addNoticeModal" id="add-notice-btn"
@@ -148,8 +210,16 @@ $_SESSION['ann_no']=1;
 
                     ?>
                       <a href='#' data-toggle='modal' data-target="#myModal" class="mb-3"
-                       id="<?php echo $srno; ?>" onclick="ShowDetails(this)"> <?php echo $row['subject']; ?> <br><br></a>
-                      
+                       id="<?php echo $srno; ?>" onclick="ShowDetails(this)"> <?php echo $row['subject']; ?>
+                       </a>
+                       
+                       <button type="button" data-toggle='modal' data-target="#deleteModal" id="<?php echo $srno; ?>"
+                        onclick="deleteNotice(this)" class="btn btn-sm btn-danger float-right">Delete</button>
+                       
+                        <button type="button" data-toggle='modal' data-target="#editNoticeModal" id="<?php echo $srno; ?>"
+                        onclick="editNotice(this)" class="btn btn-sm btn-success float-right mr-2">Edit</button>
+                       <br><br>
+                       
                       
                       <?php
                     }
@@ -192,19 +262,40 @@ $_SESSION['ann_no']=1;
               var circular=JSON.parse(response);
               $('#notice-title').text(circular.subject);
               $('#notice-content').text(circular.content);
+              $('#noticeDate').text(circular.date);
             }
           });
         }
 
-        function NoticeModal(button){
-          // var subject=$('#notice-subject').val();
-          console.log("hi");
-          // $('#saveNoticeModal').on('click',function(){
-          //   console.log('clicked');
-          //   var subject=$('#notice-subject').val();
-          //   console.log(subject);
-          // });
+        function deleteNotice(button){
+          var srno=button.id;
+          console.log(srno);
+          $('#deleteModalinput').val(srno);
+          
         }
+
+        function editNotice(button){
+          var srno=button.id;
+          console.log(srno);
+          $('#editModalSrno').val(srno);
+
+          $.ajax({
+            url:"announcement.php",
+            type:"GET",
+            data:{"srno":srno},
+            success:function(response){
+              alert(response);
+              var circular=JSON.parse(response);
+              $('#editSubject').val(circular.subject);
+              $('#editContent').val(circular.content);
+            }
+          });
+
+
+          
+        }
+
+        
      
     </script>
   
