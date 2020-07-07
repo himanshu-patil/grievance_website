@@ -1,8 +1,7 @@
 <?php
 require './connect.php';
 
-session_start();
-$update = false;  
+session_start();  
                  /*CHECK  */
 
                   
@@ -19,7 +18,7 @@ if (isset( $_POST['save'])){         /**CHECK */
     
 
  
-  $sql = "UPDATE `complain_db` SET `subject` = '$subject', `issue` =$issue  WHERE `sr no` = $srno";     
+  $sql = "UPDATE `complain_db` SET `subject` = '$subject', `issue` ='$issue'  WHERE `sr no` = $srno";     
   $result = mysqli_query($connection, $sql);
   if(mysqli_affected_rows($connection))
         {
