@@ -23,7 +23,7 @@ if(empty($username) || empty($password))
 elseif (mysqli_num_rows($result)==1)
 {
     
-    header('location:cdashboard.html');
+    header('location:cdashboard.php');
 }
 else
 {

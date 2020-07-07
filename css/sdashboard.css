@@ -25,6 +25,42 @@ body{
     padding: 10px;
 }
 
+/* .mango{
+    margin: 30px 0px;
+    padding: 20px 0px;
+    
+    background-color: rgba(0, 75, 0, 0.5);
+} */
+.mango{
+    background-color: rgba(0,0,255,0.3);
+    height: 40%;
+    color: wheat;
+    padding: 5px;
+    height: 24em;
+    overflow-y: scroll;
+    /* font-size: 40px;*/ 
+}
+.mango >a{
+    color: whitesmoke;
+}
+.mango >a:hover{
+    color: white;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+.mango > .row >a{
+    color: whitesmoke;
+}
+.mango >.row >a:hover{
+    color: white;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+b,strong{
+    font-size: 30px;
+}
 /* desktop view */
 @media screen and (min-width: 800px) {
     

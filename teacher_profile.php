@@ -25,7 +25,7 @@ session_start();
     <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark  bg-dark ">
-    <a class="navbar-brand" href="./cdashboard.html">Asgard College</a>
+    <a class="navbar-brand" href="./cdashboard.php">Asgard College</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -33,7 +33,7 @@ session_start();
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                     <a class="nav-link " href="cdashboard.html">Home</a>
+                     <a class="nav-link " href="cdashboard.php">Home</a>
                 </li>
                 <li class="nav-item ">
                   <a class="nav-link active" href="teacher_profile.php">Profile<span class="sr-only">(current)</span></a>
@@ -61,6 +61,11 @@ session_start();
             <ul class="list-group list-group-flush">
                 <?php 
                   $user=$_SESSION['teacherUsername'];
+
+                  if(empty($_SESSION['teacherUsername']))
+                  {
+                    header('location:teacher_login.html');
+                  }
                   $sql="SELECT * FROM `teacher_db` WHERE `username` ='".$user."' ";
                   $result=mysqli_query($connection,$sql);
 
@@ -84,7 +89,7 @@ session_start();
               </ul>
           </div>
 
-          <a href="./cdashboard.html"><button type="button" id="back-btn" class="btn btn-warning mt-3 float-md-right" >Back</button></a>
+          <a href="./cdashboard.php"><button type="button" id="back-btn" class="btn btn-warning mt-3 float-md-right" >Back</button></a>
         
 
   </div>

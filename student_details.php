@@ -33,7 +33,7 @@ if(empty($_SESSION['teacherUsername']))
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark  bg-dark ">
-            <a class="navbar-brand" href="./cdashboard.html">Asgard College</a>
+            <a class="navbar-brand" href="./cdashboard.php">Asgard College</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -41,7 +41,7 @@ if(empty($_SESSION['teacherUsername']))
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                     <a class="nav-link " href="cdashboard.html">Home</a>
+                     <a class="nav-link " href="cdashboard.php">Home</a>
                 </li>
                 <li class="nav-item ">
                   <a class="nav-link " href="teacher_profile.php">Profile</a>

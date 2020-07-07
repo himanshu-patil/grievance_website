@@ -20,7 +20,7 @@ session_start();
   }
   elseif (mysqli_num_rows($result)==1)
   {
-      header('location:sdashboard.html');
+      header('location:sdashboard.php');
   }
   else
   {

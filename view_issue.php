@@ -31,7 +31,7 @@ if(empty($_SESSION['username']))
 <body>
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="./sdashboard.html">Asgard College</a>
+    <a class="navbar-brand" href="./sdashboard.php">Asgard College</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -40,7 +40,7 @@ if(empty($_SESSION['username']))
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                  <a class="nav-link" href="sdashboard.html">Home </a>
+                  <a class="nav-link" href="sdashboard.php">Home </a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="student_profile.php">Profile</a>
@@ -69,7 +69,7 @@ if(empty($_SESSION['username']))
 
         <h2>
           <?php
-          $student_id = $_SESSION['username'];/**ye kya bavasir banake rakha hai samjha */
+          $student_id = $_SESSION['username'];
           $srno=$_GET['srno'];
          $sql = "SELECT * FROM `complain_db` WHERE `sr no`='$srno' LIMIT 1 ";
           
@@ -80,7 +80,7 @@ if(empty($_SESSION['username']))
 
           $row = mysqli_fetch_assoc($result);
 
-          //  echo $student_id."<br>";
+          
 
 
           if ($row) {

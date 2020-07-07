@@ -1,4 +1,3 @@
-<!-- connector -->
 
 <?php
 
