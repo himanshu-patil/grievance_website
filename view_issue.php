@@ -69,7 +69,7 @@ if(empty($_SESSION['username']))
 
         <h2>
           <?php
-          $student_id = $_SESSION['username'];/**ye kya bavasir banake rakha hai samjha */
+          $student_id = $_SESSION['username'];
           $srno=$_GET['srno'];
          $sql = "SELECT * FROM `complain_db` WHERE `sr no`='$srno' LIMIT 1 ";
           
@@ -80,7 +80,7 @@ if(empty($_SESSION['username']))
 
           $row = mysqli_fetch_assoc($result);
 
-          //  echo $student_id."<br>";
+          
 
 
           if ($row) {
