@@ -1,18 +1,31 @@
-
-<!-- this is copy from registered_complains.html -->
-
 <?php
 require './connect.php';
-
+//include './student_login.php';
+// include './view_issue.php';
 session_start();
-
-
+$update = false;  
+                 /*CHECK  */
 if(empty($_SESSION['username']))
 {
      header('location:student_login.html');
 }
+if (isset( $_POST['sr no'])){         /**CHECK */
+  
+   
+    $subject = $_POST["subjectEdit"];
+    $issue = $_POST["issueEdit"];
+    
 
-
+ 
+  $sql = "UPDATE `complain_db` SET `subject` = '$subject', `issue` =$issue  WHERE `complain_db`.`sr no` = $srno";      /*ASK ARSHAD */
+  $result = mysqli_query($connection, $sql);
+  if($result){
+           $update = true;
+     }
+  else{
+     echo "We could not update the record successfully";
+   }
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -33,6 +46,48 @@ if(empty($_SESSION['username']))
 </head>
 
 <body>
+
+<!-- Edit Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editModalLabel">Edit Your Complaint</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <form action="./grievance_websilte/registered_complains.php" method="POST">
+          <div class="modal-body">
+            <input type="hidden">
+            
+            <!-- name & id removed -->
+
+
+            <div class="form-group">
+              <label>Subject</label>
+              <input type="text" class="form-control" id="subjectEdit" name="subjectEdit" >
+            </div>
+
+            <div class="form-group">
+              <label>Issue</label>
+              <textarea class="form-control" id="issueEdit" name="issueEdit" rows="3"><?php 
+              $sq = "SELECT * FROM `complain_db` where `student id`='" . $_SESSION['username'] . "'limit 1";
+               $res = mysqli_query($connection, $sq);
+               while ($row = mysqli_fetch_assoc($res)) {
+                    echo  $row["issue"] ;}
+               ?></textarea>
+            </div>  
+          </div>
+          <div class="modal-footer d-block mr-auto">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 
      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
           <a class="navbar-brand" href="sdashboard.html">Asgard College</a>
@@ -63,6 +118,16 @@ if(empty($_SESSION['username']))
                </form> -->
           </div>
      </nav>
+     <?php
+  if($update){
+    echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
+    <strong>Success!</strong> Your complaint has been updated successfully
+    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+      <span aria-hidden='true'>×</span>
+    </button>
+  </div>";
+  }
+  ?>
 
      <!-- <img class="bg" src="./grievance_websilte/img/registered_complains_bg.jpg" alt="img here."> -->
      <div class="container my-4">
@@ -100,12 +165,13 @@ if(empty($_SESSION['username']))
 
                               echo "
                <td class='text-center'> <a href=./view_issue.php?srno=" . $row['sr no'] . " class='btn btn-secondary btn-sm active' role='button' aria-pressed='true'>View</a>
-               <button class='edit btn btn-sm btn-secondary active' id=".$row['sr no'].">Edit</button>
-          </tr>                                                  /* DOUBT*/
+               <button class='edit btn btn-sm btn-secondary' role='button' id=".$row['sr no'].">Edit</button>
+          </tr>                                                  
           ";
                          }
                          ?>
-                    </tbody>
+                    </tbody>            
+                                        
                </table>
           </div>
           
@@ -119,6 +185,28 @@ if(empty($_SESSION['username']))
           $(document).ready(function() {
                $('#myTable').DataTable();
           });
+
+      
+   var edits = document.getElementsByClassName('edit');
+    Array.from(edits).forEach((element) => {
+      element.addEventListener("click", (e) => {
+        console.log("edit");
+        tr = e.target.parentNode.parentNode;
+        subject = tr.getElementsByTagName("td")[2].innerText;
+                
+     
+     //    issue = tr.getElementsByTagName("td")[1].innerText;
+        
+
+        console.log(subject);
+        subjectEdit.value = subject;
+     //    issueEdit.value = issue;
+        srno = e.target.id               
+                                        //    snoEdit.value = e.target.id;
+        console.log(e.target.id)
+        $('#editModal').modal('toggle');
+      })
+    })
      </script>
 
 </body>

@@ -1,29 +1,14 @@
 <?php
 require './connect.php';
-//include './student_login.php';
-// include './view_issue.php';
+
 session_start();
-$update = false;                   /*CHECK  */
+
+                 /*CHECK  */
+
+                  
 if(empty($_SESSION['username']))
 {
      header('location:student_login.html');
-}
-if (isset( $_POST['sr no'])){         /**CHECK */
-  
-   
-    $subject = $_POST["subjectEdit"];
-    $issue = $_POST["issueEdit"];
-    
-
- 
-  $sql = "UPDATE `complain_db` SET `subject` = '$subject', `issue` =$issue  WHERE `complain_db`.`sr no` = $srno";      /*ASK ARSHAD */
-  $result = mysqli_query($connection, $sql);
-  if($result){
-           $update = true;
-     }
-  else{
-     echo "We could not update the record successfully";
-   }
 }
 ?>
 <!doctype html>
@@ -38,6 +23,8 @@ if (isset( $_POST['sr no'])){         /**CHECK */
      <!-- Bootstrap CSS -->
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
      <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>   -->
+     <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>   -->
 
 
      <title>Registered Complaints</title>
@@ -45,9 +32,9 @@ if (isset( $_POST['sr no'])){         /**CHECK */
 </head>
 
 <body>
-
-<!-- Edit Modal -->
-<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel"
+     <!-- Edit Modal -->
+       
+<div class="modal fade" id="dataModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -57,33 +44,35 @@ if (isset( $_POST['sr no'])){         /**CHECK */
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <form action="./grievance_websilte/registered_complains.php" method="POST">
-          <div class="modal-body">
-            <input type="hidden">
+        <form action="registered_comp.php" method="POST" >
+          <div class="modal-body" > 
+                                                                 
+            <input type="hidden" name='sr' id ='sr'>
             
-            <!-- name & id removed -->
+            
 
 
             <div class="form-group">
-              <label>Subject</label>
+              <label>Subject :</label>
               <input type="text" class="form-control" id="subjectEdit" name="subjectEdit" >
+             
             </div>
 
             <div class="form-group">
-              <label>Issue</label>
-              <textarea class="form-control" id="issueEdit" name="issueEdit" rows="3"><?php 
-              $sq = "SELECT * FROM `complain_db` where `student id`='" . $_SESSION['username'] . "'";
-               $res = mysqli_query($connection, $sq);
-               while ($row = mysqli_fetch_assoc($res)) {
-                    echo  $row["issue"] ;}
-               ?></textarea>
+              <label>Issue :</label>
+              <textarea class="form-control" id="issueEdit" name="issueEdit" rows="3">
+             
+    
+               </textarea>
             </div>  
           </div>
           <div class="modal-footer d-block mr-auto">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save changes</button>
+            <button type="submit" class="btn btn-primary" name='save'>Save changes</button>
           </div>
-        </form>
+     
+
+        </form>    
       </div>
     </div>
   </div>
@@ -117,18 +106,21 @@ if (isset( $_POST['sr no'])){         /**CHECK */
                </form> -->
           </div>
      </nav>
-     <?php
-  if($update){
-    echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
-    <strong>Success!</strong> Your complaint has been updated successfully
-    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-      <span aria-hidden='true'>×</span>
-    </button>
-  </div>";
-  }
-  ?>
+     
+     <!--  -->
 
-     <!-- <img class="bg" src="./grievance_websilte/img/registered_complains_bg.jpg" alt="img here."> -->
+     
+<!-- //   if($update){
+//     echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
+//     <strong>Success!</strong> Your complaint has been updated successfully
+//     <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+//       <span aria-hidden='true'>×</span>
+//     </button>
+//   </div>";
+//   } -->
+  
+
+     
      <div class="container my-4">
      
 
@@ -164,19 +156,23 @@ if (isset( $_POST['sr no'])){         /**CHECK */
 
                               echo "
                <td class='text-center'> <a href=./view_issue.php?srno=" . $row['sr no'] . " class='btn btn-secondary btn-sm active' role='button' aria-pressed='true'>View</a>
-               <button class='edit btn btn-sm btn-secondary' id=".$row['sr no'].">Edit</button>
-          </tr>                                                  
+               <button class=' view_data btn btn-info btn-sm btn-secondary' data-toggle='modal' data-target='#dataModal' onclick=' ShowDetails(this)'  role='button' id=".$row['sr no'].">Edit</button>
+          </tr> 
+
+          
           ";
-                         }
+                     }
                          ?>
                     </tbody>            
                                         
                </table>
+
           </div>
           
      </div>
      <hr>
-     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
      <script src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
@@ -185,27 +181,49 @@ if (isset( $_POST['sr no'])){         /**CHECK */
                $('#myTable').DataTable();
           });
 
+
+
+          
+          function ShowDetails(button){
+      var srno=button.id;
+          console.log(srno);
+       $.ajax({
+         url:"subissue.php",
+         type:"GET",
+         data:{"srno":srno},
+         success:function(response){
+              
+            var circular=JSON.parse(response);
+         
+            $('#sr').val(srno);
+            $('#subjectEdit').val(circular.subject);
+            $('#issueEdit').val(circular.issue);
+           // $('#noticeDate').text(circular.date);
+         }
+       });
+    }  
+
       
-   var edits = document.getElementsByClassName('edit');
-    Array.from(edits).forEach((element) => {
-      element.addEventListener("click", (e) => {
-        console.log("edit");
-        tr = e.target.parentNode.parentNode;
-        subject = tr.getElementsByTagName("td")[2].innerText;
+//    var edits = document.getElementsByClassName('view_data');
+//      Array.from(edits).forEach((element) => {
+//        element.addEventListener("click", (e) => {
+//          console.log("view_data");
+//          tr = e.target.parentNode.parentNode;
+//          subject = tr.getElementsByTagName("td")[2].innerText;
                 
      
-     //    issue = tr.getElementsByTagName("td")[1].innerText;
+//       //    issue = tr.getElementsByTagName("td")[1].innerText;
         
 
-        console.log(subject);
-        subjectEdit.value = subject;
-     //    issueEdit.value = issue;
-        srno = e.target.id               
-                                        //    snoEdit.value = e.target.id;
-        console.log(e.target.id)
-        $('#editModal').modal('toggle');
-      })
-    })
+//          console.log(subject);
+//          subjectEdit.value = subject;
+//       //    issueEdit.value = issue;
+//          srno = e.target.id               
+//                                          //    snoEdit.value = e.target.id;
+//          console.log(e.target.id)
+//          $('#dataModal ').modal('toggle');
+//        })
+//      })
      </script>
 
 </body>
