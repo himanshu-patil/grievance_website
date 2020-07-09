@@ -35,4 +35,29 @@ if (isset( $_POST['save'])){         /**CHECK */
             </script>";
         }
 }
+// if(isset($_POST['delete'])){
+//     $srno = $_POST['sr no'];
+    
+
+//                          // $sql = "DELETE FROM `complain_db` WHERE `sr no` = $srno";
+//     $sql = "DELETE FROM `complain_db` WHERE `complain_db`.`sr no` = $srno";
+//     $result = mysqli_query($connection, $sql);
+//     $delete = true;
+//     if(mysqli_affected_rows($connection)){  
+//         echo "<script>alert('Data deleted successfully');
+//         window.location.href='./registered_complains.php';
+//         </script>";
+        
+//     }
+//     else
+//     {
+//         echo "<script>
+//         alert('Failed to delete data');
+//         window.location.href='./registered_complains.php';
+//         </script>";
+//     }
+
+    
+// }
+
 ?>

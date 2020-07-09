@@ -3,13 +3,15 @@ require './connect.php';
 
 session_start();
 
-                 /*CHECK  */
+// $delete=false;                 
 
-                  
+
+                 
 if(empty($_SESSION['username']))
 {
      header('location:student_login.html');
 }
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -49,9 +51,6 @@ if(empty($_SESSION['username']))
                                                                  
             <input type="hidden" name='sr' id ='sr'>
             
-            
-
-
             <div class="form-group">
               <label>Subject :</label>
               <input type="text" class="form-control" id="subjectEdit" name="subjectEdit" >
@@ -76,6 +75,35 @@ if(empty($_SESSION['username']))
       </div>
     </div>
   </div>
+
+
+  <!-- delete modal  -->
+
+  <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="DeleteModalTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="DeleteModalTitle">Confirm Delete</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form action="delete_comp.php" method="POST">
+                  <input type="hidden" name="srno" id='deleteModalinput'>
+                  <div class="form-group ">
+                         <button type="submit" id="deleteModalYesBtn" name="deletebtn" class="btn btn-danger">Yes</button>
+                         <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+                   
+                  </div>
+                </form>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+
+
 
      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
           <a class="navbar-brand" href="sdashboard.php">Asgard College</a>
@@ -106,18 +134,9 @@ if(empty($_SESSION['username']))
                </form> -->
           </div>
      </nav>
+   
      
-     <!--  -->
-
-     
-<!-- //   if($update){
-//     echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
-//     <strong>Success!</strong> Your complaint has been updated successfully
-//     <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-//       <span aria-hidden='true'>×</span>
-//     </button>
-//   </div>";
-//   } -->
+    
   
 
      
@@ -135,7 +154,7 @@ if(empty($_SESSION['username']))
                               <th scope="col">Subject</th>
                               <th scope="col">Date</th>
                               <th scope="col">Status</th>
-                              <th scope="col">Action</th>
+                              <th scope="col">Actions</th>
                          </tr>
                     </thead>
                     <tbody>
@@ -143,12 +162,12 @@ if(empty($_SESSION['username']))
                          <?php
                          $sql = "SELECT * FROM `complain_db` where `student id`='" . $_SESSION['username'] . "'";
                          $result = mysqli_query($connection, $sql);
-
-
+                         
+                         $sno=1;
                          while ($row = mysqli_fetch_array($result)) {
                               echo '  
           <tr>  
-               <td>' . $row["sr no"] . '</td>  
+               <td>' . $sno .'</td>  
                <td>' . $row["student id"] . '</td>  
                <td>' . $row["subject"] . '</td>  
                <td>' . $row["date"] . '</td>  
@@ -156,11 +175,16 @@ if(empty($_SESSION['username']))
 
                               echo "
                <td class='text-center'> <a href=./view_issue.php?srno=" . $row['sr no'] . " class='btn btn-secondary btn-sm active' role='button' aria-pressed='true'>View</a>
-               <button class=' view_data btn btn-info btn-sm btn-secondary' data-toggle='modal' data-target='#dataModal' onclick=' ShowDetails(this)'  role='button' id=".$row['sr no'].">Edit</button>
+               
+               <button class='view_data btn btn-info btn-sm btn-secondary' data-toggle='modal' data-target='#dataModal' onclick=' ShowDetails(this)'  role='button' id=".$row['sr no'].">Edit</button>
+
+               
+               <button class=' btn btn-sm btn-danger'  data-toggle='modal' data-target='#deleteModal'   onclick='deletecomp(this)' role='button' id=".$row['sr no'].">Delete</button>
+
           </tr> 
 
           
-          ";
+          ";   $sno++;
                      }
                          ?>
                     </tbody>            
@@ -185,7 +209,7 @@ if(empty($_SESSION['username']))
 
           
           function ShowDetails(button){
-      var srno=button.id;
+           var srno=button.id;
           console.log(srno);
        $.ajax({
          url:"subissue.php",
@@ -198,32 +222,24 @@ if(empty($_SESSION['username']))
             $('#sr').val(srno);
             $('#subjectEdit').val(circular.subject);
             $('#issueEdit').val(circular.issue);
-           // $('#noticeDate').text(circular.date);
+           
          }
        });
     }  
 
-      
-//    var edits = document.getElementsByClassName('view_data');
-//      Array.from(edits).forEach((element) => {
-//        element.addEventListener("click", (e) => {
-//          console.log("view_data");
-//          tr = e.target.parentNode.parentNode;
-//          subject = tr.getElementsByTagName("td")[2].innerText;
-                
-     
-//       //    issue = tr.getElementsByTagName("td")[1].innerText;
-        
+    function deletecomp(button){
+         
+          var srno=button.id;
+          console.log(srno);
+          $('#deleteModalinput').val(srno);
+          
+        }
 
-//          console.log(subject);
-//          subjectEdit.value = subject;
-//       //    issueEdit.value = issue;
-//          srno = e.target.id               
-//                                          //    snoEdit.value = e.target.id;
-//          console.log(e.target.id)
-//          $('#dataModal ').modal('toggle');
-//        })
-//      })
+
+
+
+      
+
      </script>
 
 </body>
