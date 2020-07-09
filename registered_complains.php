@@ -203,7 +203,14 @@ if(empty($_SESSION['username']))
      <script>
           $(document).ready(function() {
                $('#myTable').DataTable();
+               
+               $('.dataTables_filter input').attr("placeholder", "Search here...");
+               
+               
           });
+          
+          
+          
 
 
 

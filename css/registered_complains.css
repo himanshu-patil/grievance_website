@@ -18,6 +18,23 @@
   table{
     box-shadow: 0 5px 10px 15px rgba(0, 0, 0, 0.5);
   }
+  .dataTables_length select {
+    background-color: black;
+    color: white;
+    opacity: 0.5;
+    
+   }
+
+ .dataTables_filter input {
+    background-color: black;
+    color: white;
+    opacity: 0.5;
+    margin-right: 3em;
+    border-radius: 9px;
+    box-shadow: 0 5px 10px 15px rgba(0, 0, 0, 0.5);
+ }
+
+ 
   
 
     
