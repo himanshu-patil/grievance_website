@@ -11,9 +11,7 @@
     background-color: red ;
     opacity: 0.8;
     color: white;
-    /*first test : testing branch here */
-    
-
+    text-align: center;
   }
   table{
     box-shadow: 0 5px 10px 15px rgba(0, 0, 0, 0.5);

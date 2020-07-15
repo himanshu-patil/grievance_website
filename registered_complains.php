@@ -28,6 +28,8 @@ if(empty($_SESSION['username']))
      <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>   -->
      <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>   -->
 
+     
+
      <!-- Add icon library -->
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
      <title>Registered Complaints</title>
@@ -175,9 +177,9 @@ if(empty($_SESSION['username']))
                <td>' . $row["status"] . '</td>';
 
                               echo "
-               <td class='text-center'> <a href=./view_issue.php?srno=" . $row['sr no'] . " class='btn btn-secondary btn-sm active' role='button' aria-pressed='true'>View</a>
+               <td> <a href=./view_issue.php?srno=" . $row['sr no'] . " class='btn btn-secondary btn-sm ' role='button' aria-pressed='true'>View</a>
                
-               <button class='view_data btn btn-info btn-sm btn-secondary' data-toggle='modal' data-target='#dataModal' onclick=' ShowDetails(this)'  role='button' id=".$row['sr no'].">Edit</button>
+               <button class='view_data btn btn-info btn-sm btn-secondary' data-toggle='modal' data-target='#dataModal'  onclick=' ShowDetails(this)'  role='button' id=".$row['sr no'].">Edit</button>
                             
                <button class='btn btn1 btn-sm btn-danger'  data-toggle='modal' data-target='#deleteModal' onclick='deletecomp(this)' role='button' id=".$row['sr no']."><i class='fa fa-trash'></i></button>
 
